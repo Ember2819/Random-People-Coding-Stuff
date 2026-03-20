@@ -1,0 +1,32 @@
+Preserving some comments from the beginning:
+
+// We share only a single file but we need multiple things to run the stuff
+// Rename this file to kernel.c
+// Copy over the file names, their contents and run make
+
+// Note from CheeseFunnel23
+//
+// This shit is ass bro, pissed me off so much (i know code) that i had to make it ACTUALLY work.
+//
+// no it does not work as an actual bootable thing. (yet)
+//
+// i spent way too long just rewriting a base c file that runs in the terminal, i WILL be back.
+// Oh and to the creator of this:
+// you cannot do this in one file. might needa just have people submit push requests or whatever
+// its called to the github repo.
+// 20-Mar-26, sometime after midnight, CST.
+//OK LMK what website we should use to colab for this and we can start a migration at some point. -Ember
+
+
+// btw, doesnt this have a github
+// it does, but codeshare is.. better i guess? no idea why we're using it. xtn59
+
+
+
+// wtf is this
+// but hey atleast its not ai slop
+// it it though
+// -benj (u/EastConsequence3792)
+// I use Arch btw (u/Kaleidoscope5841)
+// ^ used to be:(
+// i also use arch btw ;3 (xtn59)
