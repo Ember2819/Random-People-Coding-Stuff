@@ -6,7 +6,7 @@ Preserving some comments from the beginning:
 
 // Note from CheeseFunnel23
 //
-// This shit is ass bro, pissed me off so much (i know code) that i had to make it ACTUALLY work.
+// This **** is *** bro, ****** me off so much (i know code) that i had to make it ACTUALLY work.
 //
 // no it does not work as an actual bootable thing. (yet)
 //
@@ -23,7 +23,7 @@ Preserving some comments from the beginning:
 
 
 
-// wtf is this
+// wt* is this
 // but hey atleast its not ai slop
 // it it though
 // -benj (u/EastConsequence3792)
