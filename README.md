@@ -18,6 +18,10 @@ You can apply your contributions to the main project in two ways:
 
 If you contribute at all in any way to the project, please add your name to the list at the top of the main.c file. I highly recommend using Github to make changes as codeshare is difficult to work on multiple files and is very disorganized at the moment. I would like to make codeshare more of a note and planning page as well as a place to gather names rather than a place where we are actually working on code to improve effeciency.
 
+# TO-DO
+- Who's sacrificing an old laptop to try and boot this thing to see what errors we get lol. Someone figure out how to make the code boot and see what errors post it in issues so we can fix them
+- Remove Profanity
+
 # Roadmap
 Complete bootloader and create proper Makefile and linker.ld to place the kernel at `0x1000`
 Create Drivers
