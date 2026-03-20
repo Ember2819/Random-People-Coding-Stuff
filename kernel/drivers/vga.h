@@ -1,6 +1,14 @@
 #ifndef _VGA_H
 #define _VGA_H
 
+#include <stdint.h>
+#include <stddef.h>
+
+#define VGA_TEXT_ADDR 0xb8000
+#define VGA_GRAPHICS_ADDR 0xa0000
+#define VGA_TEXT_WIDTH 80
+#define VGA_TEXT_HEIGHT 25
+
 typedef enum VGA_COLOR {
   VGA_COLOR_BLACK = 0,
   VGA_COLOR_BLUE = 1,
@@ -22,6 +30,20 @@ typedef enum VGA_COLOR {
   VGA_COLOR_YELLOW = 0x2C
 };
 
-int puts(char* str);
+void putchar(char c, uint8_t COLOR);
+
+void write(char* data, size_t size, uint8_t COLOR);
+
+void printf(char* data, uint8_t COLOR);
+
+int puts(char* str, uint8_t color);
+
+uint8_t vga_entry_color(enum VGA_COLOR fg, enum VGA_COLOR bg);
+
+uint16_t vga_entry(unsigned char c, uint8_t color);
+
+void move_tcursor(int x, int y);
+
+void vga_clear(uint8_t color);
 
 #endif
