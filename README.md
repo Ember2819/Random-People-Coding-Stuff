@@ -5,7 +5,7 @@ We want to have a ton of random people come together and make their own individu
 ## How to Contribute:
 There are several ways you can contribute:
 - Fix a typo or add better wording
-- Improve Documentation
+- Improve documentation
 - Add a new feature
 - Improve or optimize code
 - Clean up code
@@ -24,13 +24,13 @@ If you contribute at all in any way to the project, please add your name to the 
 - Remove Profanity
 
 ## Needed Jobs
-- Dedecated tester: Must have a linux machine or linux vm running x86 to build the lastest version of the OS and distribute it on the website
+- Dedicated tester: Must have a Linux machine or Linux VM running x86 to build the lastest version of the OS and distribute it on the website.
 
 ## Roadmap
 - Dynamic Memory Management
 - Shell
    - With a basic command system
-- Storage management/filesystem
+- Storage management/Filesystem
 - Internet Access
 - Package Manager
 - First Official Release
@@ -86,4 +86,4 @@ elroylilly@gmail.com for any questions
 - c-bass
 - MorganPG / u/MorganPG1 (added build instructions to readme)
 - u/EastConsequence3792
-
+- Zorx555
