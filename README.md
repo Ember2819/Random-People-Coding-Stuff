@@ -29,7 +29,7 @@ If you contribute at all in any way to the project, please add your name to the 
 ## Roadmap
 - Dynamic Memory Management
 - Shell
- - With a basic command system
+   - With a basic command system
 - Storage management/filesystem
 - Internet Access
 - Package Manager
