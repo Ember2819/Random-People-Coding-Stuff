@@ -10,7 +10,7 @@ AS = nasm
 LD = ld
 # Truncate (to make the kernel.bin divisible by 512)
 TRUNCATE = truncate
-TRUNC_AMNT = 8192
+TRUNC_AMNT = 360448
 # Objcopy (to translate elf to bin)
 OBJCOPY = objcopy
 OBJCOPY_ARGS = -O binary

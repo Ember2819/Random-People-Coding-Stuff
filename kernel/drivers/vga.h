@@ -9,7 +9,7 @@
 #define VGA_TEXT_WIDTH 80
 #define VGA_TEXT_HEIGHT 25
 
-typedef enum VGA_COLOR {
+enum VGA_COLOR {
   VGA_COLOR_BLACK = 0,
   VGA_COLOR_BLUE = 1,
   VGA_COLOR_GREEN = 2,

@@ -98,10 +98,14 @@ disk_error:
 	call	print
 
 	xor	al, al
-	mov	si, ax
-	call	itos
-	call	print			;; Error code
 
+	;; Convert the Error code into a string and display it
+	movzx	si, ah 
+	call	itos ;; Convert INT to STRING
+	mov si,di 
+	call	print
+
+	;; Print a newline
 	mov	si, NEWLINE		;; Newline
 	call	print
 	
@@ -133,6 +137,7 @@ itos:
 	;; DI is going backwards btw
 
 	mov	bx, 10			;; Decimal counting system
+	mov di, 500h ;; Initialise the DI register so it doesn't overwrite unknown positions in RAM
 	mov	byte [di], 0		;; Adding null terminator
 	dec	di
 .loop:
