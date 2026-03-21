@@ -72,7 +72,7 @@ void putchar(char c, uint8_t COLOR) {
 	}
 	if (terminal_column == VGA_TEXT_WIDTH) {
 		terminal_column = 0;
-		terminal_row = 0;
+		terminal_row++; // MorganPG - Fix implementation for wrapping onto a new line
 	}
 	if (terminal_row == VGA_TEXT_HEIGHT)
 		terminal_row = 0;
