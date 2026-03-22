@@ -35,7 +35,7 @@ typedef struct {
 typedef uint8_t scancode_t;
 
 // Translate a scancode to ASCII according to the layout provided
-char scancode_to_ascii(scancode_t scancode);
+unsigned char scancode_to_ascii(scancode_t scancode);
 // Initialize PS/2 Keyboard
 void ps2_kb_init();
 // Process keypress

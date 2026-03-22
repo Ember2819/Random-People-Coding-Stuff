@@ -13,7 +13,7 @@ char ScASCII_UPPER[128];
 // Key State (what control keys are pressed currently)
 KeyState KEYSTATE;
 
-char scancode_to_ascii(scancode_t scancode) {
+unsigned char scancode_to_ascii(scancode_t scancode) {
     bool shift = KEYSTATE.ShiftL || KEYSTATE.ShiftR; // Is either Left Shift or Right Shift pressed
     // If shift is pressed and CapsLock isn't, and vice versa
     if (KEYSTATE.CapsLock ^ shift)

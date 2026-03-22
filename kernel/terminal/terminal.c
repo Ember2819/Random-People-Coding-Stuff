@@ -65,7 +65,7 @@ void vga_scroll(uint8_t color) {
 }
 
 
-void input(char* buff, size_t buffer_size, uint8_t color) {
+void input(unsigned char* buff, size_t buffer_size, uint8_t color) {
     size_t buff_count = 0; //Initialise the buffer count
     
     size_t x = terminal_column;
@@ -76,7 +76,7 @@ void input(char* buff, size_t buffer_size, uint8_t color) {
 
         // Ignore release scancodes
         if (sc & 0x80) continue;
-        char ascii = scancode_to_ascii(sc);
+        unsigned char ascii = scancode_to_ascii(sc);
     
         if (ascii == '\n') break;
 
