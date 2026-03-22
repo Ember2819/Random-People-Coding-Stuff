@@ -1,3 +1,4 @@
+//NOTE: If you are a new developer, kernel development is in kernel/kernel.c, this isn't actually compiled
 //linux :
 
     // If you contribute add your name here:
@@ -269,7 +270,7 @@ iso:
 // btw, doesnt this have a github
 // it does, but codeshare is.. better i guess? no idea why we're using it. xtn59
 
-typedef enum VGA_COLOR {
+enum VGA_COLOR {
   VGA_COLOR_BLACK = 0,
   VGA_COLOR_BLUE = 1,
   VGA_COLOR_GREEN = 2,
@@ -288,11 +289,11 @@ typedef enum VGA_COLOR {
   VGA_COLOR_WHITE = 15,
   VGA_COLOR_LIGHT_YELLOW = 0xE,
   VGA_COLOR_YELLOW = 0x2C
-}
+};
 
 int puts(char* str) // totally not stolen from crystal, lol
 {
-	volatile char* pVgaTextBuff = 0xB8000;
+	volatile char* pVgaTextBuff = (volatile char*)0xB8000;
 	for (str; *str != 0; str++ )
         {
         	pVgaTextBuff[0] = *str;

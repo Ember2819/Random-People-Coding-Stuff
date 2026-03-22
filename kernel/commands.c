@@ -1,16 +1,6 @@
 #include "commands.h"
+#include "colors.h"
 #include "terminal/terminal.h"
-#include "drivers/vga.h"
-
-typedef struct {
-    char *name;
-    void (*func)(uint8_t color);
-} Command;
-
-static void cmd_help(uint8_t color);
-static void cmd_hello(uint8_t color);
-static void cmd_test(uint8_t color);
-static void cmd_contributors(uint8_t);
 
 // The command table
 static Command commands[] = {
@@ -27,7 +17,8 @@ static int num_commands = sizeof(commands) / sizeof(commands[0]);
 static void cmd_help(uint8_t color) {
     printf("\nhelp   - show this message\n", color);
     printf("hello  - say hello\n", color);
-    printf("test   - placeholder", color);
+    printf("test   - placeholder\n", color);
+    printf("contributors - Displays names of all contributors", color);
 }
 
 static void cmd_hello(uint8_t color) {
@@ -39,9 +30,22 @@ static void cmd_test(uint8_t color) {
 }
 
 static void cmd_contributors(uint8_t color) {
-    printf("\n--- Contributors ---", 0x0F);
-    printf("\nEmber2819", 0x0F);
-    printf("\nSifi11", 0x0F);
+    printf("\n--- Contributors ---\n", color);
+    printf("Ember2819 - Founder\n", BOLD_COLOR);
+    printf("Sifi11\n", color);
+    printf("Crim\n", color);
+    printf("CheeseFunnel23\n", color);
+    printf("bonk enjoyer/dorito girl\n", BOLD_COLOR);
+    printf("KaleidoscopeOld5841\n", color);
+    printf("WilliamMMM/billythemoon\n", color);
+    printf("TheGirl790\n", color);
+    printf("kotofyt\n", color);
+    printf("xtn59\n", color);
+    printf("c-bass\n", color);
+    printf("u/EastConsequence3792\n", color);
+    printf("MorganPG1\n", color);
+    printf("Zorx555", color);
+    
 }
 
 // ---- dispatcher ----

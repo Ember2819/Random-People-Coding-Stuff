@@ -4,22 +4,21 @@
 #include "mem.h"
 #include "terminal/terminal.h"
 #include "commands.h" // Included by Ember2819: Adds commands
-
+#include "colors.h" // Added by MorganPG1 to centralise colors into one file
 // Ember2819: Add command functionality
 void process_input(char *buffer) {
-    run_command(buffer, vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_BLUE));
+    run_command(buffer, TERM_COLOR);
 }
 
 __attribute__((section(".text.entry"))) // Add section attribute so linker knows this should be at the start
 void _entry()
 {
-    uint8_t term_color = vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_BLUE);
-    vga_clear(term_color);
+    vga_clear(TERM_COLOR);
     //vga_set_color(VGA_COLOR_LIGHT_GREEN, VGA_COLOR_BLACK);
-    printf("----- COMMUNITY OS v0.4 -----\n", term_color);
-    printf("Built by random people on the internet.\n", term_color);
-    
-    // input loop for testing
+    printf("----- COMMUNITY OS v0.4 -----\n", TERM_COLOR);
+    printf("Built by random people on the internet.\n", TERM_COLOR);
+    printf("Use help to see available commands.\n", TERM_COLOR);
+
     // AMERICAN US QWERTY KEYBOARD
     char DOWNCASE[128] = {
         0, 27, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '\b', '\t',
@@ -37,15 +36,17 @@ void _entry()
     };
     set_layout(DOWNCASE, UPPERCASE);
     
-    while (1) {    // Temporary loop so the code doesn't halt after one line
-        uint8_t prompt_color = vga_entry_color(VGA_COLOR_LIGHT_GREEN, VGA_COLOR_BLUE);
-        printf("> ", prompt_color);
+    while (1) {    // Shell loop
+
+        printf("> ", PROMPT_COLOR);
         
+        //Obtains and processes the user input
         char buff[512];
-        input(buff, 512, term_color);
+        input(buff, 512, TERM_COLOR);
         process_input(buff);
+
         //Adds a new line and then restarts the loop
-        putchar('\n', term_color);
+        putchar('\n', TERM_COLOR);
     }
 
     asm volatile ("hlt");

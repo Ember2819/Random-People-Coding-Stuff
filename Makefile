@@ -18,7 +18,7 @@ AS_FLAGS = -f bin
 LD_FLAGS = -m elf_i386 -T linker.ld
 KERNEL_OBJECTS = kernel/kernel.o kernel/ports.o kernel/mem.o
 DRIVER_OBJECTS = kernel/drivers/vga.o kernel/drivers/keyboard.o
-MISC_OBJECTS = kernel/terminal/terminal.o kernel/commands.o # ADDED
+MISC_OBJECTS = kernel/colors.o kernel/terminal/terminal.o kernel/commands.o # ADDED
 # Builds the final disk image
 all: os.img
 	
@@ -28,6 +28,9 @@ all: os.img
 # Assemble the bootloader
 bootloader/boot.bin: bootloader/boot.s
 	$(AS) $(AS_FLAGS) $< -o $@
+# Added by MorganPG1
+kernel/colors.o: kernel/colors.c
+	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@
 # Compile drivers
 kernel/drivers/vga.o: kernel/drivers/vga.c
 	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@

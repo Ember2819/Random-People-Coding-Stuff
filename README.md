@@ -89,6 +89,6 @@ Also, you can join the community slack [here](https://join.slack.com/t/communtiy
 - kotofyt
 - xtn59
 - c-bass
-- MorganPG / u/MorganPG1 (added build instructions to readme)
 - u/EastConsequence3792
+- MorganPG1 (added build instructions to readme)
 - Zorx555
