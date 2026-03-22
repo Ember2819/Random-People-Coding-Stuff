@@ -13,7 +13,7 @@ char ScASCII_UPPER[128];
 // Key State (what control keys are pressed currently)
 KeyState KEYSTATE;
 
-char scancode_to_ascii(scancode_t scancode) {
+unsigned char scancode_to_ascii(scancode_t scancode) {
     bool shift = KEYSTATE.ShiftL || KEYSTATE.ShiftR; // Is either Left Shift or Right Shift pressed
     // If shift is pressed and CapsLock isn't, and vice versa
     if (KEYSTATE.CapsLock ^ shift)
@@ -60,7 +60,7 @@ void ps2_kb_init() {
 
 // Im getting tired of writing these dumb comments that nobody reads.
 
-void set_layout(char* DOWNCASE, char* UPPERCASE) {
+void set_layout(unsigned char* DOWNCASE, unsigned char* UPPERCASE) {
     for (int j = 0; j < 128; j++) ScASCII[j] = DOWNCASE[j];
     for (int j = 0; j < 128; j++) ScASCII_UPPER[j] = UPPERCASE[j];
 }
