@@ -7,19 +7,6 @@
 #include "commands.h" // Included by Ember2819: Adds commands
 #include "colors.h" // Added by MorganPG1 to centralise colors into one file
 
-#define BANNER \
-"   █████████                                                                  ███   █████                  ███████     █████████ \n" \
-"  ███░░░░░███                                                                ░░░   ░░███                 ███░░░░░███  ███░░░░░███\n" \
-" ███     ░░░   ██████  █████████████   █████████████   █████ ████ ████████   ████  ███████   █████ ████ ███     ░░███░███    ░░░ \n" \
-"░███          ███░░███░░███░░███░░███ ░░███░░███░░███ ░░███ ░███ ░░███░░███ ░░███ ░░░███░   ░░███ ░███ ░███      ░███░░█████████ \n" \
-"░███         ░███ ░███ ░███ ░███ ░███  ░███ ░███ ░███  ░███ ░███  ░███ ░███  ░███   ░███     ░███ ░███ ░███      ░███ ░░░░░░░░███\n" \
-"░░███     ███░███ ░███ ░███ ░███ ░███  ░███ ░███ ░███  ░███ ░███  ░███ ░███  ░███   ░███ ███ ░███ ░███ ░░███     ███  ███    ░███\n" \
-" ░░█████████ ░░██████  █████░███ █████ █████░███ █████ ░░████████ ████ █████ █████  ░░█████  ░░███████  ░░░███████░  ░░█████████ \n" \
-"  ░░░░░░░░░   ░░░░░░  ░░░░░ ░░░ ░░░░░ ░░░░░ ░░░ ░░░░░   ░░░░░░░░ ░░░░ ░░░░░ ░░░░░    ░░░░░    ░░░░░███    ░░░░░░░     ░░░░░░░░░  \n" \
-"                                                                                              ███ ░███                           \n" \
-"                                                                                             ░░██████                            \n"
-"  
-
 // Ember2819: Add command functionality
 void process_input(unsigned char *buffer) {
     run_command(buffer, TERM_COLOR);
@@ -30,8 +17,7 @@ void _entry()
 {
     // Initialise display.
     vga_clear(TERM_COLOR);
-    printf(BANNER", TERM_COLOR);
-    prinf("v0.5", TERM_COLOR);
+    printf("----- COMMUNITY OS v0.5 -----\n", TERM_COLOR);
     printf("Built by random people on the internet.\n", TERM_COLOR);
     printf("Use help to see available commands.\n", TERM_COLOR);
 

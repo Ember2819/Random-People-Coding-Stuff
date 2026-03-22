@@ -2,8 +2,8 @@
 #define KB_LAYOUTS_H
 
 typedef struct {
-    char lower[128];
-    char upper[128];
+    unsigned char lower[128];
+    unsigned char upper[128];
 } KeyboardLayout;
 
 extern KeyboardLayout LAYOUTS[];
