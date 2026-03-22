@@ -4,6 +4,8 @@
 
 uint16_t terminal_column = 0; 
 uint16_t terminal_row = 0;
+static int history_count = 0;
+static int history_head  = 0;
 
 void putchar(char c, uint8_t color) {
 	if (c == 0) {
@@ -71,11 +73,6 @@ void terminal_clear(uint8_t color) {
     move_tcursor(0, 0);
 }
 
-#define HISTORY_SIZE 10
-static unsigned char history_entries[HISTORY_SIZE][512];
-static int history_count = 0;
-static int history_head  = 0;
-
 static void history_push(unsigned char* buf) {
     if (buf[0] == '\0') return;
     size_t i;
@@ -90,14 +87,13 @@ static void history_push(unsigned char* buf) {
 
 void input(unsigned char* buff, size_t buffer_size, uint8_t color) {
     size_t buff_count = 0; //Initialise the buffer count
-    
-    size_t x = terminal_column;
-    size_t y = terminal_row;
+    size_t start_x = terminal_column;
+    size_t start_y = terminal_row;
 
     // Ember2891: history
     int browse_idx = 0;
     unsigned char saved_input[512];
-    saved_input[0] = '\0';
+    //saved_input[0] = '\0';
 
     while (true) {
         scancode_t sc = ps2_kb_wfi();
@@ -108,7 +104,9 @@ void input(unsigned char* buff, size_t buffer_size, uint8_t color) {
         if (sc == KEY_UP || sc == KEY_DOWN) {
             if (sc == KEY_UP && browse_idx == 0) {
                 size_t k;
-                for (k = 0; k < buff_count; k++) saved_input[k] = buff[k];
+                for (k = 0; k < buff_count; k++) {
+                    saved_input[k] = buff[k];
+                }
                 saved_input[k] = '\0';
             }
 
@@ -124,26 +122,23 @@ void input(unsigned char* buff, size_t buffer_size, uint8_t color) {
                 src = history_entries[slot];
             }
 
-            for (size_t k = 0; k < buff_count; k++) {
-                size_t col = (x + k) % VGA_TEXT_WIDTH;
-                size_t row = y + (x + k) / VGA_TEXT_WIDTH;
+            for (size_t k = 0; k < terminal_column-start_x; k++) {
+                size_t col = (start_x + k) % VGA_TEXT_WIDTH;
+                size_t row = start_y + (start_x + k) / VGA_TEXT_WIDTH;
                 putentryat(' ', color, col, row);
             }
             // Reset software and hardware cursor back to start of input.
-            terminal_column = x;
-            terminal_row    = y;
-            move_tcursor(x, y);
+            terminal_column = start_x;
+            terminal_row    = start_y;
+            move_tcursor(start_x, start_y);
 
             size_t k;
             for (k = 0; src[k] && k < buffer_size - 1; k++) {
                 buff[k] = src[k];
                 putchar(src[k], color);
             }
-            buff_count       = k;
+            buff_count = k;
             buff[buff_count] = '\0';
-            y = terminal_row;
-            x = terminal_column;
-
             continue;
         }
         unsigned char ascii = scancode_to_ascii(sc);
@@ -152,22 +147,20 @@ void input(unsigned char* buff, size_t buffer_size, uint8_t color) {
 
         if (ascii == '\b') {
             if (buff_count > 0) {
-                if (x > 0) {
-                    x--;
+                if (terminal_column > 0) {
+                    terminal_column--;
                 }
-                else if (y > 0) { 
-                    x = VGA_TEXT_WIDTH - 1;
-                    y--;
+                else if (terminal_row > 0) { 
+                    terminal_row = VGA_TEXT_WIDTH - 1;
+                    terminal_row--;
                 }
 
-                putentryat(' ', color, x, y);
+                putentryat(' ', color, terminal_column, terminal_row);
                 buff_count--;
                 buff[buff_count] = 0;
                 
                 // Update cursor
-                terminal_column = x;
-                terminal_row = y;
-                move_tcursor(x, y);
+                move_tcursor(terminal_column, terminal_row);
             }
             continue;
         }
@@ -175,9 +168,6 @@ void input(unsigned char* buff, size_t buffer_size, uint8_t color) {
             buff[buff_count] = ascii;
             
             putchar(ascii, color);
-
-            y = terminal_row;
-            x = terminal_column;
             buff_count++;
         }
     }

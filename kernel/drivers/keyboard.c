@@ -73,8 +73,8 @@ void ps2_kb_init() {
 // Im getting tired of writing these dumb comments that nobody reads.
 
 void set_layout(KeyboardLayout layout) {
-    char* lowercase = layout.lower;
-    char* uppercase = layout.upper;
+    unsigned char* lowercase = layout.lower;
+    unsigned char* uppercase = layout.upper;
 
     for (int j = 0; j < 128; j++) ScASCII[j] = lowercase[j];
     for (int j = 0; j < 128; j++) ScASCII_UPPER[j] = uppercase[j];
