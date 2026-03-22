@@ -1,6 +1,5 @@
 #include "../drivers/keyboard.h"
 #include "../drivers/vga.h"
-#include <stddef.h>
 #include "terminal.h"
 
 uint16_t terminal_column = 0; 
