@@ -10,7 +10,7 @@ typedef struct {
 static void cmd_help(uint8_t color);
 static void cmd_hello(uint8_t color);
 static void cmd_test(uint8_t color);
-static void CMD_contributors(uint8_t);
+static void cmd_contributors(uint8_t);
 
 // The command table
 static Command commands[] = {
@@ -39,9 +39,9 @@ static void cmd_test(uint8_t color) {
 }
 
 static void cmd_contributors(uint8_t color) {
-    printf("--- Contributors ---");
-    printf("Ember2819");
-    printf("Sifi11");
+    printf("\n--- Contributors ---", 0x0F);
+    printf("\nEmber2819", 0x0F);
+    printf("\nSifi11", 0x0F);
 }
 
 // ---- dispatcher ----
